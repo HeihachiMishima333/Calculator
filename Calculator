@@ -67,7 +67,7 @@ else
         }
         if (calculator[i] != '*' && calculator[i] != '/') {
 if(negativity==1)
-{printf("x=%f\n",x);
+{
 result+=x;
 }
 else
@@ -129,7 +129,7 @@ else
                 x /= y;
 }
             }
-printf("%f=X\n",x);
+
           }
    x*=-1;
   if(negativity==1)
