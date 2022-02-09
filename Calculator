@@ -1,3 +1,13 @@
+
+/*
+   מחשבון 
+ משתמשים בארבע אופרטורים:+ - * /
+
+ הקומבינציות הן     --  *-   /-   
+
+מסיימים עם =
+
+*/
 #include <stdio.h>
 void main() {
     char calculator[1000], c;
@@ -311,5 +321,5 @@ else
       }
     
 }
-printf("result=%f\n",result);
+printf("result= %f\n",result);
   }
