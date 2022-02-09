@@ -1,0 +1,315 @@
+#include <stdio.h>
+void main() {
+    char calculator[1000], c;
+    int i = 0, q, flag = 1, k, t, f,negativity,jin_kazama;
+    float count, a[1000], result = 0, x = 0, y = 0;
+
+    scanf("%s", calculator);
+
+    while (calculator[i] != '=') {
+negativity=0;
+      x = 0;
+      count = 0.1;
+      f = 0;
+jin_kazama=0;
+      if (calculator[i] >= '1' && calculator[i] <= '9') {
+        while (calculator[i] != '*' && calculator[i] != '-' && calculator[i] != '+' && calculator[i] != '/' && calculator[i] != '=') {
+          count *= 10;
+
+          a[i] = (float)(calculator[i]);
+          a[i] -= 48.0;
+
+          i++;
+          f = 1;
+
+        }
+        if (f == 1) {
+          for (k = 0; k < i; k++) {
+
+            result += a[k] * count;
+
+            count /= 10;
+
+          }
+        }
+
+      } 
+      else if (calculator[i] == '-') {
+if(calculator[i+1]=='-')
+{
+    
+    i+=2;
+    negativity=1;
+    t=i;
+}
+else
+{
+        i++;
+        t = i;
+ }
+ while (calculator[i] != '*' && calculator[i] != '-' && calculator[i] != '+' && calculator[i] != '/' && calculator[i] != '=') {
+
+          a[i] = (float)(calculator[i]);
+          a[i] -= 48.0;
+          count *= 10;
+          f = 2;
+          i++;
+        }
+        if (f == 2) {
+          for (t; t < i; t++) {
+
+            x += a[t] * count;
+
+            count /= 10;
+
+          }
+
+        }
+        if (calculator[i] != '*' && calculator[i] != '/') {
+if(negativity==1)
+{printf("x=%f\n",x);
+result+=x;
+}
+else
+          result -= x;
+        } 
+
+        else
+        {
+         
+          while (calculator[i] == '*' || calculator[i] == '/') {
+     jin_kazama=0;
+        if(calculator[i]=='*')
+        c='*';
+        else
+        c='/';
+         if(calculator[i+1]=='-')
+            {i+=2;
+            jin_kazama=1;
+            
+                y=0;
+                count=0.1;
+                t=i;
+            }
+            else
+            {
+            i++;
+            y = 0;
+            count = 0.1;
+            t = i;
+            }
+            while (calculator[i] != '*' && calculator[i] != '-' && calculator[i] != '+' && calculator[i] != '/' && calculator[i] != '=') {
+
+              a[i] = (float)(calculator[i]);
+              a[i] -= 48.0;
+              count *= 10;
+
+              f = 2;
+              i++;
+            }
+            if (f == 2) {
+
+              for (t; t < i; t++) {
+
+                y += a[t] * count;
+
+                count /= 10;
+
+              }
+              if (c == '*')
+          {  if(jin_kazama==1)
+            x*=-1;
+                x *= y;
+          }
+              else
+              {
+                  if(jin_kazama==1)
+              x*=-1;
+          
+                x /= y;
+}
+            }
+printf("%f=X\n",x);
+          }
+   x*=-1;
+  if(negativity==1)
+  x*=-1;
+        result+=x;
+
+        }
+}
+       else if (calculator[i] == '+') {
+
+        i++;
+        t = i;
+        while (calculator[i] != '*' && calculator[i] != '-' && calculator[i] != '+' && calculator[i] != '/' && calculator[i] != '=') {
+
+          a[i] = (float)(calculator[i]);
+          a[i] -= 48.0;
+          count *= 10;
+          f = 2;
+          i++;
+        }
+        if (f == 2) {
+          for (t; t < i; t++) {
+
+            x += a[t] * count;
+
+            count /= 10;
+
+          }
+
+        }
+        if (calculator[i] != '*' && calculator[i] != '/') {
+
+          result += x;
+        } else
+
+        {
+          if (calculator[i] == '*')
+            c = '*';
+          else
+            c = '/';
+          while (calculator[i] == '*' || calculator[i] == '/') {
+        jin_kazama=0;
+          if (calculator[i] == '*')
+            c = '*';
+          else
+            c = '/';
+          if(calculator[i+1]=='-')
+          {
+              
+              i+=2;
+              jin_kazama=1;
+          y=0;
+          count=0.1;
+          t=i;
+              
+          }
+            else
+            {
+            i++;
+            y = 0;
+            count = 0.1;
+            t = i;
+            }
+            while (calculator[i] != '*' && calculator[i] != '-' && calculator[i] != '+' && calculator[i] != '/' && calculator[i] != '=') {
+
+              a[i] = (float)(calculator[i]);
+              a[i] -= 48.0;
+              count *= 10;
+
+              f = 2;
+              i++;
+            }
+            if (f == 2) {
+
+              for (t; t < i; t++) {
+
+                y += a[t] * count;
+
+                count /= 10;
+
+              }
+              if (c == '*')
+          {
+                if(jin_kazama==1)
+                x*=-1;
+                x *= y;
+          }
+    
+              else
+          {
+           if(jin_kazama==1)
+           x*=-1;
+           x /= y;
+            }
+          
+
+          }
+        
+        }
+       
+            result += x;
+            
+        }
+      } else if (calculator[i] == '*') {
+    if(calculator[i+1]=='-')
+    {
+      
+        y=0;
+        i+=2;
+        t=i;
+        jin_kazama=1;
+    }
+    else
+    {
+        y = 0;
+        i++;
+        t = i;
+    }
+        while (calculator[i] != '*' && calculator[i] != '-' && calculator[i] != '+' && calculator[i] != '/' && calculator[i] != '=') {
+
+          a[i] = (float)(calculator[i]);
+          a[i] -= 48.0;
+          count *= 10;
+          f = 2;
+          i++;
+        }
+        if (f == 2) {
+          for (t; t < i; t++) {
+
+            x += a[t] * count;
+
+            count /= 10;
+
+          }
+
+        }
+     if(jin_kazama==1)
+     x*=-1;
+        result *= x;
+
+      }
+      else if (calculator[i] == '/') {
+ if(calculator[i+1]=='-')
+    {
+    
+        y=0;
+        i+=2;
+        t=i;
+        jin_kazama=1;
+    }
+    else
+    {
+        i++;
+        t = i;
+        
+    }
+        while (calculator[i] != '*' && calculator[i] != '-' && calculator[i] != '+' && calculator[i] != '/' && calculator[i] != '=') {
+
+          a[i] = (float)(calculator[i]);
+          a[i] -= 48.0;
+          count *= 10;
+          f = 2;
+          i++;
+        }
+        if (f == 2) {
+          for (t; t < i; t++) {
+
+            x += a[t] * count;
+
+            count /= 10;
+
+          } 
+       if(jin_kazama==1)
+         x*=-1;
+          result /= x;
+
+        }
+
+      }
+    
+}
+printf("result=%f\n",result);
+  }
